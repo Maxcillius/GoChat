@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package = db;
+
+option go_package = "github.com/Maxcillius/GoChat/platforms/db/proto";
+import "google/protobuf/timestamp.proto";
+
+service DBService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc CreateProfile(CreateProfileRequest) returns (CreateProfileResponse);
+    rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+    rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+    rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+}
+
+message CreateUserRequest {
+    string id = 1;
+    string email = 2;
+    string password_hash = 3;
+}
+
+message CreateUserResponse {
+    string id = 1;
+    string email = 2;
+}
+
+message CreateProfileRequest {
+    string user_id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+    string bio = 4;
+    string last_seen = 5;
+}
+
+message CreateProfileResponse {
+    
+}
+
+message GetProfileRequest {
+    string user_id = 1;
+}
+
+message GetProfileResponse {
+    string user_id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+    string bio = 4;
+    string last_seen = 5;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse {
+    string user_id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+    string bio = 4;
+}
+
+message CreateSessionRequest {
+
+}
