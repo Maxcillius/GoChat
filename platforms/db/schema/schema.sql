@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 CREATE TABLE IF NOT EXISTS profiles(
-    user_id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
+    user_id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
     display_name VARCHAR(100),
     avatar_url TEXT,
     bio TEXT,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS profiles(
 
 CREATE TABLE IF NOT EXISTS sessions (
     id UUID PRIMARY KEY,
-    used_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     refresh_token TEXT UNIQUE NOT NULL,
     ip_address TEXT,
     user_agent TEXT,

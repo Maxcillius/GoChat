@@ -1,4 +1,4 @@
---name: CreateSession: one
+-- name: CreateSession :one
 INSERT INTO sessions(
     id,
     user_id,
@@ -16,6 +16,5 @@ INSERT INTO sessions(
 )
 RETURNING id, user_id, refresh_token, expires_at;
 
---name: GetSession: one
-SELECT * from sessions WHERE id == $1;
-RETURNING id, user_id, refresh_token, expires_at;
+-- name: GetSession :one
+SELECT id, user_id, refresh_token, expires_at FROM sessions WHERE user_id = $1;
