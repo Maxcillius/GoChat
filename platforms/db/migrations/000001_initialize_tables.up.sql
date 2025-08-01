@@ -8,18 +8,18 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS profiles(
     user_id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
-    display_name VARCHAR(100) NOT NULL,
+    display_name VARCHAR(100),
     avatar_url TEXT,
     bio TEXT,
-    last_seen TIMESTAMPTZ NOT NULL
+    last_seen TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS sessions (
     id UUID PRIMARY KEY,
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     refresh_token TEXT UNIQUE NOT NULL,
-    ip_address TEXT NOT NULL,
-    user_agent TEXT NOT NULL,
+    ip_address TEXT,
+    user_agent TEXT,
     expires_at TIMESTAMPTZ NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS messages (
     conversation_id UUID REFERENCES conversations(id) ON DELETE CASCADE,
     sender_id UUID NOT NULL,
     message_type VARCHAR(20) DEFAULT 'text',
-    content TEXT NOT NULL,
+    content TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     is_edited BOOLEAN DEFAULT FALSE,
     reply_to UUID REFERENCES messages(id)

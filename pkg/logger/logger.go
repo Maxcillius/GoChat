@@ -24,8 +24,8 @@ func New() (*logr.Logger, error) {
 			EncodeTime:     zapcore.EpochMillisTimeEncoder,
 			EncodeDuration: zapcore.SecondsDurationEncoder,
 		},
-		OutputPaths:      []string{"./logs/"},
-		ErrorOutputPaths: []string{"./logs/"},
+		OutputPaths:      []string{"stdout"},
+		ErrorOutputPaths: []string{"stderr"},
 	}
 
 	l, err := config.Build()

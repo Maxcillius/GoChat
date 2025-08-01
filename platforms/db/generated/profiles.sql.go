@@ -8,6 +8,7 @@ package db
 import (
 	"context"
 
+	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
@@ -29,7 +30,7 @@ RETURNING user_id, display_name, avatar_url, bio, last_seen
 `
 
 type CreateProfileParams struct {
-	UserID      pgtype.UUID        `json:"user_id"`
+	UserID      uuid.UUID          `json:"user_id"`
 	DisplayName pgtype.Text        `json:"display_name"`
 	AvatarUrl   pgtype.Text        `json:"avatar_url"`
 	Bio         pgtype.Text        `json:"bio"`
@@ -59,7 +60,7 @@ const getProfile = `-- name: GetProfile :one
 SELECT user_id, display_name, avatar_url, bio, last_seen FROM profiles WHERE user_id = $1
 `
 
-func (q *Queries) GetProfile(ctx context.Context, userID pgtype.UUID) (Profile, error) {
+func (q *Queries) GetProfile(ctx context.Context, userID uuid.UUID) (Profile, error) {
 	row := q.db.QueryRow(ctx, getProfile, userID)
 	var i Profile
 	err := row.Scan(

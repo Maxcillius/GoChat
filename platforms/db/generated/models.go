@@ -5,21 +5,22 @@
 package db
 
 import (
+	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
 type Conversation struct {
-	ID        pgtype.UUID        `json:"id"`
+	ID        uuid.UUID          `json:"id"`
 	Title     pgtype.Text        `json:"title"`
 	IsGroup   pgtype.Bool        `json:"is_group"`
-	CreatedBy pgtype.UUID        `json:"created_by"`
+	CreatedBy uuid.UUID          `json:"created_by"`
 	CreatedAt pgtype.Timestamptz `json:"created_at"`
 }
 
 type Message struct {
-	ID             pgtype.UUID        `json:"id"`
+	ID             uuid.UUID          `json:"id"`
 	ConversationID pgtype.UUID        `json:"conversation_id"`
-	SenderID       pgtype.UUID        `json:"sender_id"`
+	SenderID       uuid.UUID          `json:"sender_id"`
 	MessageType    pgtype.Text        `json:"message_type"`
 	Content        pgtype.Text        `json:"content"`
 	CreatedAt      pgtype.Timestamptz `json:"created_at"`
@@ -28,7 +29,7 @@ type Message struct {
 }
 
 type Profile struct {
-	UserID      pgtype.UUID        `json:"user_id"`
+	UserID      uuid.UUID          `json:"user_id"`
 	DisplayName pgtype.Text        `json:"display_name"`
 	AvatarUrl   pgtype.Text        `json:"avatar_url"`
 	Bio         pgtype.Text        `json:"bio"`
@@ -36,7 +37,7 @@ type Profile struct {
 }
 
 type Session struct {
-	ID           pgtype.UUID        `json:"id"`
+	ID           uuid.UUID          `json:"id"`
 	UserID       pgtype.UUID        `json:"user_id"`
 	RefreshToken string             `json:"refresh_token"`
 	IpAddress    pgtype.Text        `json:"ip_address"`
@@ -46,7 +47,7 @@ type Session struct {
 }
 
 type User struct {
-	ID           pgtype.UUID        `json:"id"`
+	ID           uuid.UUID          `json:"id"`
 	Email        string             `json:"email"`
 	PasswordHash string             `json:"password_hash"`
 	IsVerified   pgtype.Bool        `json:"is_verified"`

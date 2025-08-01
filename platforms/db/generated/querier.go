@@ -7,6 +7,7 @@ package db
 import (
 	"context"
 
+	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
@@ -14,9 +15,9 @@ type Querier interface {
 	CreateProfile(ctx context.Context, arg CreateProfileParams) (Profile, error)
 	CreateSession(ctx context.Context, arg CreateSessionParams) (CreateSessionRow, error)
 	CreateUser(ctx context.Context, arg CreateUserParams) (CreateUserRow, error)
-	GetProfile(ctx context.Context, userID pgtype.UUID) (Profile, error)
+	GetProfile(ctx context.Context, userID uuid.UUID) (Profile, error)
 	GetSession(ctx context.Context, userID pgtype.UUID) (GetSessionRow, error)
-	GetUser(ctx context.Context, id pgtype.UUID) (GetUserRow, error)
+	GetUser(ctx context.Context, id uuid.UUID) (GetUserRow, error)
 }
 
 var _ Querier = (*Queries)(nil)

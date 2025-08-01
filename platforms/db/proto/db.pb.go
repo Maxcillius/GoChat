@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v4.25.3
-// source: db.proto
+// source: platforms/db/proto/db.proto
 
 package proto
 
@@ -23,16 +23,15 @@ const (
 
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	PasswordHash  string                 `protobuf:"bytes,3,opt,name=password_hash,json=passwordHash,proto3" json:"password_hash,omitempty"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateUserRequest) Reset() {
 	*x = CreateUserRequest{}
-	mi := &file_db_proto_msgTypes[0]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +43,7 @@ func (x *CreateUserRequest) String() string {
 func (*CreateUserRequest) ProtoMessage() {}
 
 func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[0]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,14 +56,7 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreateUserRequest) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateUserRequest) GetEmail() string {
@@ -74,9 +66,9 @@ func (x *CreateUserRequest) GetEmail() string {
 	return ""
 }
 
-func (x *CreateUserRequest) GetPasswordHash() string {
+func (x *CreateUserRequest) GetPassword() string {
 	if x != nil {
-		return x.PasswordHash
+		return x.Password
 	}
 	return ""
 }
@@ -91,7 +83,7 @@ type CreateUserResponse struct {
 
 func (x *CreateUserResponse) Reset() {
 	*x = CreateUserResponse{}
-	mi := &file_db_proto_msgTypes[1]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -103,7 +95,7 @@ func (x *CreateUserResponse) String() string {
 func (*CreateUserResponse) ProtoMessage() {}
 
 func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[1]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -116,7 +108,7 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserResponse) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{1}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateUserResponse) GetId() string {
@@ -142,7 +134,7 @@ type GetUserRequest struct {
 
 func (x *GetUserRequest) Reset() {
 	*x = GetUserRequest{}
-	mi := &file_db_proto_msgTypes[2]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -154,7 +146,7 @@ func (x *GetUserRequest) String() string {
 func (*GetUserRequest) ProtoMessage() {}
 
 func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[2]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -167,7 +159,7 @@ func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRequest) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{2}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetUserRequest) GetId() string {
@@ -189,7 +181,7 @@ type GetUserResponse struct {
 
 func (x *GetUserResponse) Reset() {
 	*x = GetUserResponse{}
-	mi := &file_db_proto_msgTypes[3]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -201,7 +193,7 @@ func (x *GetUserResponse) String() string {
 func (*GetUserResponse) ProtoMessage() {}
 
 func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[3]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +206,7 @@ func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
 func (*GetUserResponse) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{3}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetUserResponse) GetUserId() string {
@@ -247,7 +239,7 @@ func (x *GetUserResponse) GetBio() string {
 
 type CreateProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	DisplayName   string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	AvatarUrl     string                 `protobuf:"bytes,3,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
 	Bio           string                 `protobuf:"bytes,4,opt,name=bio,proto3" json:"bio,omitempty"`
@@ -258,7 +250,7 @@ type CreateProfileRequest struct {
 
 func (x *CreateProfileRequest) Reset() {
 	*x = CreateProfileRequest{}
-	mi := &file_db_proto_msgTypes[4]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -270,7 +262,7 @@ func (x *CreateProfileRequest) String() string {
 func (*CreateProfileRequest) ProtoMessage() {}
 
 func (x *CreateProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[4]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,12 +275,12 @@ func (x *CreateProfileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateProfileRequest.ProtoReflect.Descriptor instead.
 func (*CreateProfileRequest) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{4}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateProfileRequest) GetUserId() string {
+func (x *CreateProfileRequest) GetId() string {
 	if x != nil {
-		return x.UserId
+		return x.Id
 	}
 	return ""
 }
@@ -329,7 +321,7 @@ type CreateProfileResponse struct {
 
 func (x *CreateProfileResponse) Reset() {
 	*x = CreateProfileResponse{}
-	mi := &file_db_proto_msgTypes[5]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -341,7 +333,7 @@ func (x *CreateProfileResponse) String() string {
 func (*CreateProfileResponse) ProtoMessage() {}
 
 func (x *CreateProfileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[5]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -354,7 +346,7 @@ func (x *CreateProfileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateProfileResponse.ProtoReflect.Descriptor instead.
 func (*CreateProfileResponse) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{5}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{5}
 }
 
 type GetProfileRequest struct {
@@ -366,7 +358,7 @@ type GetProfileRequest struct {
 
 func (x *GetProfileRequest) Reset() {
 	*x = GetProfileRequest{}
-	mi := &file_db_proto_msgTypes[6]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -378,7 +370,7 @@ func (x *GetProfileRequest) String() string {
 func (*GetProfileRequest) ProtoMessage() {}
 
 func (x *GetProfileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[6]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -391,7 +383,7 @@ func (x *GetProfileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProfileRequest.ProtoReflect.Descriptor instead.
 func (*GetProfileRequest) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{6}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetProfileRequest) GetUserId() string {
@@ -414,7 +406,7 @@ type GetProfileResponse struct {
 
 func (x *GetProfileResponse) Reset() {
 	*x = GetProfileResponse{}
-	mi := &file_db_proto_msgTypes[7]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -426,7 +418,7 @@ func (x *GetProfileResponse) String() string {
 func (*GetProfileResponse) ProtoMessage() {}
 
 func (x *GetProfileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[7]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -439,7 +431,7 @@ func (x *GetProfileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetProfileResponse.ProtoReflect.Descriptor instead.
 func (*GetProfileResponse) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{7}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetProfileResponse) GetUserId() string {
@@ -479,20 +471,16 @@ func (x *GetProfileResponse) GetLastSeen() string {
 
 type CreateSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	IpAddress     string                 `protobuf:"bytes,4,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
-	UserAgent     string                 `protobuf:"bytes,5,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
-	ExpiresAt     string                 `protobuf:"bytes,6,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserAgent     string                 `protobuf:"bytes,2,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
+	IpAddress     string                 `protobuf:"bytes,3,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateSessionRequest) Reset() {
 	*x = CreateSessionRequest{}
-	mi := &file_db_proto_msgTypes[8]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -504,7 +492,7 @@ func (x *CreateSessionRequest) String() string {
 func (*CreateSessionRequest) ProtoMessage() {}
 
 func (x *CreateSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[8]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -517,33 +505,12 @@ func (x *CreateSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSessionRequest.ProtoReflect.Descriptor instead.
 func (*CreateSessionRequest) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *CreateSessionRequest) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CreateSessionRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
-	}
-	return ""
-}
-
-func (x *CreateSessionRequest) GetRefreshToken() string {
-	if x != nil {
-		return x.RefreshToken
-	}
-	return ""
-}
-
-func (x *CreateSessionRequest) GetIpAddress() string {
-	if x != nil {
-		return x.IpAddress
 	}
 	return ""
 }
@@ -555,16 +522,9 @@ func (x *CreateSessionRequest) GetUserAgent() string {
 	return ""
 }
 
-func (x *CreateSessionRequest) GetExpiresAt() string {
+func (x *CreateSessionRequest) GetIpAddress() string {
 	if x != nil {
-		return x.ExpiresAt
-	}
-	return ""
-}
-
-func (x *CreateSessionRequest) GetCreatedAt() string {
-	if x != nil {
-		return x.CreatedAt
+		return x.IpAddress
 	}
 	return ""
 }
@@ -581,7 +541,7 @@ type CreateSessionResponse struct {
 
 func (x *CreateSessionResponse) Reset() {
 	*x = CreateSessionResponse{}
-	mi := &file_db_proto_msgTypes[9]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -593,7 +553,7 @@ func (x *CreateSessionResponse) String() string {
 func (*CreateSessionResponse) ProtoMessage() {}
 
 func (x *CreateSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[9]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -606,7 +566,7 @@ func (x *CreateSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSessionResponse.ProtoReflect.Descriptor instead.
 func (*CreateSessionResponse) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{9}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CreateSessionResponse) GetId() string {
@@ -646,7 +606,7 @@ type GetSessionRequest struct {
 
 func (x *GetSessionRequest) Reset() {
 	*x = GetSessionRequest{}
-	mi := &file_db_proto_msgTypes[10]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -658,7 +618,7 @@ func (x *GetSessionRequest) String() string {
 func (*GetSessionRequest) ProtoMessage() {}
 
 func (x *GetSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[10]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -671,7 +631,7 @@ func (x *GetSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSessionRequest.ProtoReflect.Descriptor instead.
 func (*GetSessionRequest) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{10}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetSessionRequest) GetUserId() string {
@@ -686,14 +646,14 @@ type GetSessionResponse struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	ExpiresAt     string                 `protobuf:"bytes,6,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	ExpiresAt     string                 `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetSessionResponse) Reset() {
 	*x = GetSessionResponse{}
-	mi := &file_db_proto_msgTypes[11]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -705,7 +665,7 @@ func (x *GetSessionResponse) String() string {
 func (*GetSessionResponse) ProtoMessage() {}
 
 func (x *GetSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_db_proto_msgTypes[11]
+	mi := &file_platforms_db_proto_db_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -718,7 +678,7 @@ func (x *GetSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSessionResponse.ProtoReflect.Descriptor instead.
 func (*GetSessionResponse) Descriptor() ([]byte, []int) {
-	return file_db_proto_rawDescGZIP(), []int{11}
+	return file_platforms_db_proto_db_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetSessionResponse) GetId() string {
@@ -749,15 +709,14 @@ func (x *GetSessionResponse) GetExpiresAt() string {
 	return ""
 }
 
-var File_db_proto protoreflect.FileDescriptor
+var File_platforms_db_proto_db_proto protoreflect.FileDescriptor
 
-const file_db_proto_rawDesc = "" +
+const file_platforms_db_proto_db_proto_rawDesc = "" +
 	"\n" +
-	"\bdb.proto\x12\x02db\"^\n" +
-	"\x11CreateUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\x12#\n" +
-	"\rpassword_hash\x18\x03 \x01(\tR\fpasswordHash\":\n" +
+	"\x1bplatforms/db/proto/db.proto\x12\x02db\"E\n" +
+	"\x11CreateUserRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\":\n" +
 	"\x12CreateUserResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\" \n" +
@@ -768,9 +727,9 @@ const file_db_proto_rawDesc = "" +
 	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12\x1d\n" +
 	"\n" +
 	"avatar_url\x18\x03 \x01(\tR\tavatarUrl\x12\x10\n" +
-	"\x03bio\x18\x04 \x01(\tR\x03bio\"\xa0\x01\n" +
-	"\x14CreateProfileRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x12!\n" +
+	"\x03bio\x18\x04 \x01(\tR\x03bio\"\x97\x01\n" +
+	"\x14CreateProfileRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
 	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12\x1d\n" +
 	"\n" +
 	"avatar_url\x18\x03 \x01(\tR\tavatarUrl\x12\x10\n" +
@@ -785,19 +744,13 @@ const file_db_proto_rawDesc = "" +
 	"\n" +
 	"avatar_url\x18\x03 \x01(\tR\tavatarUrl\x12\x10\n" +
 	"\x03bio\x18\x04 \x01(\tR\x03bio\x12\x1b\n" +
-	"\tlast_seen\x18\x05 \x01(\tR\blastSeen\"\xe0\x01\n" +
-	"\x14CreateSessionRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
-	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x12\x1d\n" +
+	"\tlast_seen\x18\x05 \x01(\tR\blastSeen\"m\n" +
+	"\x14CreateSessionRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n" +
 	"\n" +
-	"ip_address\x18\x04 \x01(\tR\tipAddress\x12\x1d\n" +
+	"user_agent\x18\x02 \x01(\tR\tuserAgent\x12\x1d\n" +
 	"\n" +
-	"user_agent\x18\x05 \x01(\tR\tuserAgent\x12\x1d\n" +
-	"\n" +
-	"expires_at\x18\x06 \x01(\tR\texpiresAt\x12\x1d\n" +
-	"\n" +
-	"created_at\x18\a \x01(\tR\tcreatedAt\"\x84\x01\n" +
+	"ip_address\x18\x03 \x01(\tR\tipAddress\"\x84\x01\n" +
 	"\x15CreateSessionResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
@@ -811,7 +764,7 @@ const file_db_proto_rawDesc = "" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
 	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x12\x1d\n" +
 	"\n" +
-	"expires_at\x18\x06 \x01(\tR\texpiresAt2\x82\x03\n" +
+	"expires_at\x18\x04 \x01(\tR\texpiresAt2\x82\x03\n" +
 	"\tDBService\x12;\n" +
 	"\n" +
 	"CreateUser\x12\x15.db.CreateUserRequest\x1a\x16.db.CreateUserResponse\x122\n" +
@@ -824,19 +777,19 @@ const file_db_proto_rawDesc = "" +
 	"GetSession\x12\x15.db.GetSessionRequest\x1a\x16.db.GetSessionResponseB1Z/github.com/Maxcillius/GoChat/platforms/db/protob\x06proto3"
 
 var (
-	file_db_proto_rawDescOnce sync.Once
-	file_db_proto_rawDescData []byte
+	file_platforms_db_proto_db_proto_rawDescOnce sync.Once
+	file_platforms_db_proto_db_proto_rawDescData []byte
 )
 
-func file_db_proto_rawDescGZIP() []byte {
-	file_db_proto_rawDescOnce.Do(func() {
-		file_db_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_db_proto_rawDesc), len(file_db_proto_rawDesc)))
+func file_platforms_db_proto_db_proto_rawDescGZIP() []byte {
+	file_platforms_db_proto_db_proto_rawDescOnce.Do(func() {
+		file_platforms_db_proto_db_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_platforms_db_proto_db_proto_rawDesc), len(file_platforms_db_proto_db_proto_rawDesc)))
 	})
-	return file_db_proto_rawDescData
+	return file_platforms_db_proto_db_proto_rawDescData
 }
 
-var file_db_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
-var file_db_proto_goTypes = []any{
+var file_platforms_db_proto_db_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_platforms_db_proto_db_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),     // 0: db.CreateUserRequest
 	(*CreateUserResponse)(nil),    // 1: db.CreateUserResponse
 	(*GetUserRequest)(nil),        // 2: db.GetUserRequest
@@ -850,7 +803,7 @@ var file_db_proto_goTypes = []any{
 	(*GetSessionRequest)(nil),     // 10: db.GetSessionRequest
 	(*GetSessionResponse)(nil),    // 11: db.GetSessionResponse
 }
-var file_db_proto_depIdxs = []int32{
+var file_platforms_db_proto_db_proto_depIdxs = []int32{
 	0,  // 0: db.DBService.CreateUser:input_type -> db.CreateUserRequest
 	2,  // 1: db.DBService.GetUser:input_type -> db.GetUserRequest
 	4,  // 2: db.DBService.CreateProfile:input_type -> db.CreateProfileRequest
@@ -870,26 +823,26 @@ var file_db_proto_depIdxs = []int32{
 	0,  // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_db_proto_init() }
-func file_db_proto_init() {
-	if File_db_proto != nil {
+func init() { file_platforms_db_proto_db_proto_init() }
+func file_platforms_db_proto_db_proto_init() {
+	if File_platforms_db_proto_db_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_db_proto_rawDesc), len(file_db_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platforms_db_proto_db_proto_rawDesc), len(file_platforms_db_proto_db_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_db_proto_goTypes,
-		DependencyIndexes: file_db_proto_depIdxs,
-		MessageInfos:      file_db_proto_msgTypes,
+		GoTypes:           file_platforms_db_proto_db_proto_goTypes,
+		DependencyIndexes: file_platforms_db_proto_db_proto_depIdxs,
+		MessageInfos:      file_platforms_db_proto_db_proto_msgTypes,
 	}.Build()
-	File_db_proto = out.File
-	file_db_proto_goTypes = nil
-	file_db_proto_depIdxs = nil
+	File_platforms_db_proto_db_proto = out.File
+	file_platforms_db_proto_db_proto_goTypes = nil
+	file_platforms_db_proto_db_proto_depIdxs = nil
 }

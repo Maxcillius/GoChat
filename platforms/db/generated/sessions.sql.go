@@ -8,6 +8,7 @@ package db
 import (
 	"context"
 
+	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
@@ -31,7 +32,7 @@ RETURNING id, user_id, refresh_token, expires_at
 `
 
 type CreateSessionParams struct {
-	ID           pgtype.UUID        `json:"id"`
+	ID           uuid.UUID          `json:"id"`
 	UserID       pgtype.UUID        `json:"user_id"`
 	RefreshToken string             `json:"refresh_token"`
 	IpAddress    pgtype.Text        `json:"ip_address"`
@@ -40,7 +41,7 @@ type CreateSessionParams struct {
 }
 
 type CreateSessionRow struct {
-	ID           pgtype.UUID        `json:"id"`
+	ID           uuid.UUID          `json:"id"`
 	UserID       pgtype.UUID        `json:"user_id"`
 	RefreshToken string             `json:"refresh_token"`
 	ExpiresAt    pgtype.Timestamptz `json:"expires_at"`
@@ -70,7 +71,7 @@ SELECT id, user_id, refresh_token, expires_at FROM sessions WHERE user_id = $1
 `
 
 type GetSessionRow struct {
-	ID           pgtype.UUID        `json:"id"`
+	ID           uuid.UUID          `json:"id"`
 	UserID       pgtype.UUID        `json:"user_id"`
 	RefreshToken string             `json:"refresh_token"`
 	ExpiresAt    pgtype.Timestamptz `json:"expires_at"`

@@ -8,6 +8,7 @@ package db
 import (
 	"context"
 
+	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
@@ -27,15 +28,15 @@ RETURNING id, email
 `
 
 type CreateUserParams struct {
-	ID           pgtype.UUID `json:"id"`
+	ID           uuid.UUID   `json:"id"`
 	Email        string      `json:"email"`
 	PasswordHash string      `json:"password_hash"`
 	IsVerified   pgtype.Bool `json:"is_verified"`
 }
 
 type CreateUserRow struct {
-	ID    pgtype.UUID `json:"id"`
-	Email string      `json:"email"`
+	ID    uuid.UUID `json:"id"`
+	Email string    `json:"email"`
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (CreateUserRow, error) {
@@ -55,12 +56,12 @@ SELECT id, email, is_verified FROM users WHERE id = $1
 `
 
 type GetUserRow struct {
-	ID         pgtype.UUID `json:"id"`
+	ID         uuid.UUID   `json:"id"`
 	Email      string      `json:"email"`
 	IsVerified pgtype.Bool `json:"is_verified"`
 }
 
-func (q *Queries) GetUser(ctx context.Context, id pgtype.UUID) (GetUserRow, error) {
+func (q *Queries) GetUser(ctx context.Context, id uuid.UUID) (GetUserRow, error) {
 	row := q.db.QueryRow(ctx, getUser, id)
 	var i GetUserRow
 	err := row.Scan(&i.ID, &i.Email, &i.IsVerified)
