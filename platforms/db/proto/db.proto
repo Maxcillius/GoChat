@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package db;
+
+option go_package = "github.com/Maxcillius/GoChat/platforms/db/proto";
+
+service DBService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc GetUser(GetUserRequest) returns (GetUserResponse);
+    rpc CreateProfile(CreateProfileRequest) returns (CreateProfileResponse);
+    rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+    rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+    rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+}
+
+message CreateUserRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message CreateUserResponse {
+    string id = 1;
+    string email = 2;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse {
+    string user_id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+    string bio = 4;
+}
+
+message CreateProfileRequest {
+    string id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+    string bio = 4;
+    string last_seen = 5;
+}
+
+message CreateProfileResponse {
+
+}
+
+message GetProfileRequest {
+    string user_id = 1;
+}
+
+message GetProfileResponse {
+    string user_id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+    string bio = 4;
+    string last_seen = 5;
+}
+
+message CreateSessionRequest {
+    string user_id = 1;
+    string user_agent = 2;
+    string ip_address = 3;
+}
+
+message CreateSessionResponse {
+    string id = 1;
+    string user_id = 2;
+    string refresh_token = 3;
+    string expires_at = 4;
+}
+
+message GetSessionRequest {
+    string user_id = 1;
+}
+
+message GetSessionResponse {
+    string id = 1;
+    string user_id = 2;
+    string refresh_token = 3;
+    string expires_at = 4;
+}
