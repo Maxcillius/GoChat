@@ -17,6 +17,7 @@ INSERT INTO sessions(
     id,
     user_id,
     refresh_token,
+    access_token,
     ip_address,
     user_agent,
     expires_at
@@ -26,17 +27,19 @@ INSERT INTO sessions(
     $3,
     $4,
     $5,
-    $6
+    $6,
+    $7
 )
-RETURNING id, user_id, refresh_token, expires_at
+RETURNING id, user_id, refresh_token, access_token, expires_at
 `
 
 type CreateSessionParams struct {
 	ID           uuid.UUID          `json:"id"`
 	UserID       pgtype.UUID        `json:"user_id"`
 	RefreshToken string             `json:"refresh_token"`
-	IpAddress    pgtype.Text        `json:"ip_address"`
-	UserAgent    pgtype.Text        `json:"user_agent"`
+	AccessToken  string             `json:"access_token"`
+	IpAddress    string             `json:"ip_address"`
+	UserAgent    string             `json:"user_agent"`
 	ExpiresAt    pgtype.Timestamptz `json:"expires_at"`
 }
 
@@ -44,6 +47,7 @@ type CreateSessionRow struct {
 	ID           uuid.UUID          `json:"id"`
 	UserID       pgtype.UUID        `json:"user_id"`
 	RefreshToken string             `json:"refresh_token"`
+	AccessToken  string             `json:"access_token"`
 	ExpiresAt    pgtype.Timestamptz `json:"expires_at"`
 }
 
@@ -52,6 +56,7 @@ func (q *Queries) CreateSession(ctx context.Context, arg CreateSessionParams) (C
 		arg.ID,
 		arg.UserID,
 		arg.RefreshToken,
+		arg.AccessToken,
 		arg.IpAddress,
 		arg.UserAgent,
 		arg.ExpiresAt,
@@ -61,6 +66,7 @@ func (q *Queries) CreateSession(ctx context.Context, arg CreateSessionParams) (C
 		&i.ID,
 		&i.UserID,
 		&i.RefreshToken,
+		&i.AccessToken,
 		&i.ExpiresAt,
 	)
 	return i, err

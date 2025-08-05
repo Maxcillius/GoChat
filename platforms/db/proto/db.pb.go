@@ -472,8 +472,9 @@ func (x *GetProfileResponse) GetLastSeen() string {
 type CreateSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	UserAgent     string                 `protobuf:"bytes,2,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
-	IpAddress     string                 `protobuf:"bytes,3,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
+	AuthToken     string                 `protobuf:"bytes,2,opt,name=auth_token,json=authToken,proto3" json:"auth_token,omitempty"`
+	UserAgent     string                 `protobuf:"bytes,3,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
+	IpAddress     string                 `protobuf:"bytes,4,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -515,6 +516,13 @@ func (x *CreateSessionRequest) GetUserId() string {
 	return ""
 }
 
+func (x *CreateSessionRequest) GetAuthToken() string {
+	if x != nil {
+		return x.AuthToken
+	}
+	return ""
+}
+
 func (x *CreateSessionRequest) GetUserAgent() string {
 	if x != nil {
 		return x.UserAgent
@@ -534,7 +542,8 @@ type CreateSessionResponse struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	ExpiresAt     string                 `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,4,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	ExpiresAt     string                 `protobuf:"bytes,5,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -586,6 +595,13 @@ func (x *CreateSessionResponse) GetUserId() string {
 func (x *CreateSessionResponse) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *CreateSessionResponse) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
 	}
 	return ""
 }
@@ -744,19 +760,22 @@ const file_platforms_db_proto_db_proto_rawDesc = "" +
 	"\n" +
 	"avatar_url\x18\x03 \x01(\tR\tavatarUrl\x12\x10\n" +
 	"\x03bio\x18\x04 \x01(\tR\x03bio\x12\x1b\n" +
-	"\tlast_seen\x18\x05 \x01(\tR\blastSeen\"m\n" +
+	"\tlast_seen\x18\x05 \x01(\tR\blastSeen\"\x8c\x01\n" +
 	"\x14CreateSessionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n" +
 	"\n" +
-	"user_agent\x18\x02 \x01(\tR\tuserAgent\x12\x1d\n" +
+	"auth_token\x18\x02 \x01(\tR\tauthToken\x12\x1d\n" +
 	"\n" +
-	"ip_address\x18\x03 \x01(\tR\tipAddress\"\x84\x01\n" +
+	"user_agent\x18\x03 \x01(\tR\tuserAgent\x12\x1d\n" +
+	"\n" +
+	"ip_address\x18\x04 \x01(\tR\tipAddress\"\xa7\x01\n" +
 	"\x15CreateSessionResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
-	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x12\x1d\n" +
+	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x12!\n" +
+	"\faccess_token\x18\x04 \x01(\tR\vaccessToken\x12\x1d\n" +
 	"\n" +
-	"expires_at\x18\x04 \x01(\tR\texpiresAt\",\n" +
+	"expires_at\x18\x05 \x01(\tR\texpiresAt\",\n" +
 	"\x11GetSessionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x81\x01\n" +
 	"\x12GetSessionResponse\x12\x0e\n" +

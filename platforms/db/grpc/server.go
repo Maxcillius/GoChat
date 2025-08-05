@@ -55,14 +55,23 @@ func (s *server) CreateSession(ctx context.Context, req *proto.CreateSessionRequ
 	}
 
 	userid := pgtype.UUID{Bytes: id, Valid: true}
-	ipaddress := pgtype.Text{String: req.IpAddress, Valid: true}
-	useragent := pgtype.Text{String: req.UserAgent, Valid: true}
+	ipaddress := req.IpAddress
+	useragent := req.UserAgent
+	// auth_token := req.AuthToken
+
+	// send auth token to the session provider server to get the refresh and access token
+	access_token := "access_token"
+	refresh_token := "refresh_token"
 
 	if req.IpAddress == "" {
 		return nil, fmt.Errorf("ipaddress is empty: %w", err)
 	}
 
-	newSession, err := s.db.CreateSession(ctx, userid, ipaddress, useragent)
+	if refresh_token == "" {
+		return nil, fmt.Errorf("authorization token is empty: %w", err)
+	}
+
+	newSession, err := s.db.CreateSession(ctx, userid, refresh_token, access_token, ipaddress, useragent)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create session: %w", err)
 	}

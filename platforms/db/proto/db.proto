@@ -60,15 +60,17 @@ message GetProfileResponse {
 
 message CreateSessionRequest {
     string user_id = 1;
-    string user_agent = 2;
-    string ip_address = 3;
+    string auth_token = 2;
+    string user_agent = 3;
+    string ip_address = 4;
 }
 
 message CreateSessionResponse {
     string id = 1;
     string user_id = 2;
     string refresh_token = 3;
-    string expires_at = 4;
+    string access_token = 4;
+    string expires_at = 5;
 }
 
 message GetSessionRequest {

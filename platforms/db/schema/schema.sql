@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS sessions (
     id UUID PRIMARY KEY,
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     refresh_token TEXT UNIQUE NOT NULL,
+    access_token TEXT UNIQUE NOT NULL,
     ip_address TEXT NOT NULL,
     user_agent TEXT NOT NULL,
     expires_at TIMESTAMPTZ NOT NULL,

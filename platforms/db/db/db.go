@@ -104,7 +104,7 @@ func (db *DB) CreateUser(ctx context.Context, email string, password string) (sq
 func (db *DB) CreateProfile(ctx context.Context, id uuid.UUID, name string, avatarurl string, bio string) error {
 	newUserCred := sqlcdb.CreateProfileParams{
 		UserID:      id,
-		DisplayName: pgtype.Text{String: name, Valid: true},
+		DisplayName: name,
 		AvatarUrl:   pgtype.Text{String: avatarurl, Valid: true},
 		Bio:         pgtype.Text{String: bio, Valid: true},
 		LastSeen:    pgtype.Timestamptz{Time: time.Now(), Valid: true},
@@ -118,17 +118,18 @@ func (db *DB) CreateProfile(ctx context.Context, id uuid.UUID, name string, avat
 	return nil
 }
 
-func (db *DB) CreateSession(ctx context.Context, user_id pgtype.UUID, ip_address pgtype.Text, user_agent pgtype.Text) (sqlcdb.CreateSessionRow, error) {
+func (db *DB) CreateSession(ctx context.Context, user_id pgtype.UUID, refresh_token string, access_token string, ip_address string, user_agent string) (sqlcdb.CreateSessionRow, error) {
 
 	id := uuid.New()
 
 	newSessionCred := sqlcdb.CreateSessionParams{
 		ID:           id,
 		UserID:       user_id,
-		RefreshToken: "",
+		RefreshToken: refresh_token,
+		AccessToken:  access_token,
 		IpAddress:    ip_address,
 		UserAgent:    user_agent,
-		ExpiresAt:    pgtype.Timestamptz{Time: time.Now(), Valid: true},
+		ExpiresAt:    pgtype.Timestamptz{Time: time.Now().Add(time.Hour * 24 * 30), Valid: true},
 	}
 
 	result, err := db.query.CreateSession(ctx, newSessionCred)
@@ -136,7 +137,8 @@ func (db *DB) CreateSession(ctx context.Context, user_id pgtype.UUID, ip_address
 		return sqlcdb.CreateSessionRow{
 			ID:           uuid.Nil,
 			UserID:       pgtype.UUID{},
-			RefreshToken: "",
+			RefreshToken: refresh_token,
+			AccessToken:  access_token,
 			ExpiresAt:    pgtype.Timestamptz{},
 		}, fmt.Errorf("unable to create the session: %w", err)
 	}
@@ -145,6 +147,7 @@ func (db *DB) CreateSession(ctx context.Context, user_id pgtype.UUID, ip_address
 		ID:           result.ID,
 		UserID:       result.UserID,
 		RefreshToken: result.RefreshToken,
+		AccessToken:  result.AccessToken,
 		ExpiresAt:    result.ExpiresAt,
 	}, nil
 }

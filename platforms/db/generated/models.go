@@ -22,7 +22,7 @@ type Message struct {
 	ConversationID pgtype.UUID        `json:"conversation_id"`
 	SenderID       uuid.UUID          `json:"sender_id"`
 	MessageType    pgtype.Text        `json:"message_type"`
-	Content        pgtype.Text        `json:"content"`
+	Content        string             `json:"content"`
 	CreatedAt      pgtype.Timestamptz `json:"created_at"`
 	IsEdited       pgtype.Bool        `json:"is_edited"`
 	ReplyTo        pgtype.UUID        `json:"reply_to"`
@@ -30,7 +30,7 @@ type Message struct {
 
 type Profile struct {
 	UserID      uuid.UUID          `json:"user_id"`
-	DisplayName pgtype.Text        `json:"display_name"`
+	DisplayName string             `json:"display_name"`
 	AvatarUrl   pgtype.Text        `json:"avatar_url"`
 	Bio         pgtype.Text        `json:"bio"`
 	LastSeen    pgtype.Timestamptz `json:"last_seen"`
@@ -40,8 +40,9 @@ type Session struct {
 	ID           uuid.UUID          `json:"id"`
 	UserID       pgtype.UUID        `json:"user_id"`
 	RefreshToken string             `json:"refresh_token"`
-	IpAddress    pgtype.Text        `json:"ip_address"`
-	UserAgent    pgtype.Text        `json:"user_agent"`
+	AccessToken  string             `json:"access_token"`
+	IpAddress    string             `json:"ip_address"`
+	UserAgent    string             `json:"user_agent"`
 	ExpiresAt    pgtype.Timestamptz `json:"expires_at"`
 	CreatedAt    pgtype.Timestamptz `json:"created_at"`
 }

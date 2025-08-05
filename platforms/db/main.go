@@ -11,7 +11,7 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-func main() {
+func Main() {
 	os.Exit(run(context.Background()))
 }
 

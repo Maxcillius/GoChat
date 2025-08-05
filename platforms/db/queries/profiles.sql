@@ -11,7 +11,8 @@ INSERT INTO profiles(
     $3,
     $4,
     $5
-);
+)
+RETURNING NULL;
 
 -- name: GetProfile :one
 SELECT * FROM profiles WHERE user_id = $1;

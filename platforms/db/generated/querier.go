@@ -12,7 +12,7 @@ import (
 )
 
 type Querier interface {
-	CreateProfile(ctx context.Context, arg CreateProfileParams) (Profile, error)
+	CreateProfile(ctx context.Context, arg CreateProfileParams) (interface{}, error)
 	CreateSession(ctx context.Context, arg CreateSessionParams) (CreateSessionRow, error)
 	CreateUser(ctx context.Context, arg CreateUserParams) (CreateUserRow, error)
 	GetProfile(ctx context.Context, userID uuid.UUID) (Profile, error)

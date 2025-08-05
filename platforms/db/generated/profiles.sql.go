@@ -26,18 +26,18 @@ INSERT INTO profiles(
     $4,
     $5
 )
-RETURNING user_id, display_name, avatar_url, bio, last_seen
+RETURNING NULL
 `
 
 type CreateProfileParams struct {
 	UserID      uuid.UUID          `json:"user_id"`
-	DisplayName pgtype.Text        `json:"display_name"`
+	DisplayName string             `json:"display_name"`
 	AvatarUrl   pgtype.Text        `json:"avatar_url"`
 	Bio         pgtype.Text        `json:"bio"`
 	LastSeen    pgtype.Timestamptz `json:"last_seen"`
 }
 
-func (q *Queries) CreateProfile(ctx context.Context, arg CreateProfileParams) (Profile, error) {
+func (q *Queries) CreateProfile(ctx context.Context, arg CreateProfileParams) (interface{}, error) {
 	row := q.db.QueryRow(ctx, createProfile,
 		arg.UserID,
 		arg.DisplayName,
@@ -45,15 +45,9 @@ func (q *Queries) CreateProfile(ctx context.Context, arg CreateProfileParams) (P
 		arg.Bio,
 		arg.LastSeen,
 	)
-	var i Profile
-	err := row.Scan(
-		&i.UserID,
-		&i.DisplayName,
-		&i.AvatarUrl,
-		&i.Bio,
-		&i.LastSeen,
-	)
-	return i, err
+	var column_1 interface{}
+	err := row.Scan(&column_1)
+	return column_1, err
 }
 
 const getProfile = `-- name: GetProfile :one
