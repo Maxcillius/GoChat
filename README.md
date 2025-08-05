@@ -98,7 +98,7 @@ Please ensure code is formatted and tests are added where necessary.
 
 ### License
 
-This project is currently unlicensed. You may add a LICENSE file (MIT, Apache 2.0, etc.) as needed.
+This project is currently unlicensed.
 
 ### Contact
 
